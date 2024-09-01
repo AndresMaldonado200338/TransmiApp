@@ -13,6 +13,54 @@
 
     <div id="header-container"></div>
 
+    <div class="container mt-5">
+        <h1>Editar Transmilenio</h1>
+        <form id="editBusForm" novalidate>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInputOldPlateLetters" placeholder="ABC" maxlength="3"
+                    required>
+                <label for="floatingInputOldPlateLetters">Letras de la antigua matrícula</label>
+                <div class="invalid-feedback">
+                    Debe ingresar 3 letras (Ej: ABC).
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInputOldPlateNumbers" placeholder="123" maxlength="3"
+                    required>
+                <label for="floatingInputOldPlateNumbers">Números de la antigua matrícula</label>
+                <div class="invalid-feedback">
+                    Debe ingresar 3 números (Ej: 123).
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInputNewPlateLetters" placeholder="DEF" maxlength="3"
+                    required>
+                <label for="floatingInputNewPlateLetters">Letras de la nueva matrícula</label>
+                <div class="invalid-feedback">
+                    Debe ingresar 3 letras (Ej: DEF).
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInputNewPlateNumbers" placeholder="456" maxlength="3"
+                    required>
+                <label for="floatingInputNewPlateNumbers">Números de la nueva matrícula</label>
+                <div class="invalid-feedback">
+                    Debe ingresar 3 números (Ej: 456).
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="time" class="form-control" id="floatingInputArrivalTime" required>
+                <label for="floatingInputArrivalTime">Nuevo tiempo de llegada</label>
+                <div class="invalid-feedback">
+                    Debe seleccionar un tiempo de llegada válido.
+                </div>
+            </div>
+            <button type="submit" class="btn btn-dark">Editar bus</button>
+        </form>
+    </div>
+
+    <script src="Edit.js"></script>
+
 </body>
 
 </html>
