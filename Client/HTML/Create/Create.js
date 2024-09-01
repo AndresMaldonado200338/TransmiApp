@@ -31,8 +31,8 @@ document.getElementById('newBusForm').addEventListener('submit', function (event
 
     if (isValid) {
         const busInfo = {
-            placa: plateLetters.value.toUpperCase() + plateNumbers.value,
-            tiempoLlegada: arrivalTime.value
+            bus_plate: plateLetters.value.toUpperCase() + plateNumbers.value,
+            bus_last_arrival: arrivalTime.value
         };
 
         fetch('http://localhost:3000/buses', {
@@ -44,7 +44,7 @@ document.getElementById('newBusForm').addEventListener('submit', function (event
         })
         .then(response => response.json())
         .then(data => {
-            alert(`Transmilenio con matrícula ${data.placa} creado con éxito.`);
+            alert(`Transmilenio con matrícula ${data.bus_plate} creado con éxito.`);
         })
         .catch(error => {
             alert('Error al crear el bus: ' + error.message);
