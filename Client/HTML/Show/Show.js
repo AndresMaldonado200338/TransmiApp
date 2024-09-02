@@ -5,8 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const totalBuses = document.getElementById('busesTotales').getElementsByTagName('tbody')[0];
             let busCount = 1;
 
-            Object.keys(data).forEach(placa => {
-                const bus = data[placa];
+            data.forEach(bus => {
                 const row = totalBuses.insertRow();
 
                 const cellBusCount = row.insertCell(0);
@@ -15,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const cellTotalBusEdit = row.insertCell(3);
 
                 cellBusCount.textContent = busCount++;
-                cellBusPlate.textContent = placa;
+                cellBusPlate.textContent = bus.placa;
                 cellBusLastArrival.textContent = bus.tiempoLlegada || 'No hay';
                 cellTotalBusEdit.textContent = bus.editado || 0;
             });

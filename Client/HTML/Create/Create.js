@@ -42,12 +42,18 @@ document.getElementById('newBusForm').addEventListener('submit', function (event
             },
             body: JSON.stringify(busInfo)
         })
-        .then(response => response.json())
-        .then(data => {
-            alert(`Transmilenio con matrícula ${data.placa} creado con éxito.`);
-        })
-        .catch(error => {
-            alert('Error al crear el bus: ' + error.message);
-        });
+            .then(response => {
+                if (!response.ok) {
+                    return alert ('Bus ya creado');
+                }
+                return response.json();
+            })
+            .then(data => {
+                alert(`El Bus ${data.placa} fue creado exitosamente.`);
+            })
+            .catch(error => {
+                errorMessageDiv.textContent = error.message;
+                errorMessageDiv.style.display = 'block';
+            });
     }
 });

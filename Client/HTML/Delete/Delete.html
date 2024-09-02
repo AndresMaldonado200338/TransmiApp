@@ -13,6 +13,31 @@
 
     <div id="header-container"></div>
 
+    <div class="container mt-5">
+        <h1>Eliminar Transmilenio</h1>
+        <form id="deleteBusForm" novalidate>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInputPlateLetters" placeholder="ABC" maxlength="3"
+                    required>
+                <label for="floatingInputPlateLetters">Letras de la matrícula</label>
+                <div class="invalid-feedback">
+                    Debe ingresar 3 letras (Ej: ABC).
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInputPlateNumbers" placeholder="123" maxlength="3"
+                    required>
+                <label for="floatingInputPlateNumbers">Números de la matrícula</label>
+                <div class="invalid-feedback">
+                    Debe ingresar 3 números (Ej: 123).
+                </div>
+            </div>
+            <button type="submit" class="btn btn-dark">Eliminar bus</button>
+        </form>
+    </div>
+
+    <script src="Delete.js"></script>
+
 </body>
 
 </html>
