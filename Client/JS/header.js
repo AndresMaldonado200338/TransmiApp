@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'Index.html': 'nav-home',
                 'create.html': 'nav-create',
                 'edit.html': 'nav-edit',
-                'show_all.html': 'nav-show',
+                'show.html': 'nav-show',
                 'search.html': 'nav-search',
                 'delete.html': 'nav-delete'
             };

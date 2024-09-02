@@ -31,8 +31,8 @@ document.getElementById('newBusForm').addEventListener('submit', function (event
 
     if (isValid) {
         const busInfo = {
-            bus_plate: plateLetters.value.toUpperCase() + plateNumbers.value,
-            bus_last_arrival: arrivalTime.value
+            placa: plateLetters.value.toUpperCase() + plateNumbers.value,
+            tiempoLlegada: arrivalTime.value
         };
 
         fetch('http://localhost:3000/buses', {
@@ -42,12 +42,18 @@ document.getElementById('newBusForm').addEventListener('submit', function (event
             },
             body: JSON.stringify({ placa: 'ABD123', tiempoLlegada: '10:30' })
         })
-        .then(response => response.json())
-        .then(data => {
-            alert(`Transmilenio con matrícula ${data.bus_plate} creado con éxito.`);
-        })
-        .catch(error => {
-            alert('Error al crear el bus: ' + error.message);
-        });
+            .then(response => {
+                if (!response.ok) {
+                    return alert ('Bus ya creado');
+                }
+                return response.json();
+            })
+            .then(data => {
+                alert(`El Bus ${data.placa} fue creado exitosamente.`);
+            })
+            .catch(error => {
+                errorMessageDiv.textContent = error.message;
+                errorMessageDiv.style.display = 'block';
+            });
     }
 });

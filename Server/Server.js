@@ -5,10 +5,15 @@ const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
-const dataFilePath = path.join(__dirname, 'Data', 'Data.json');
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type']
+}));
 
 app.use(express.json());
-app.use(cors());
+
+const dataFilePath = path.join(__dirname, 'Data', 'Data.json');
 
 app.get('/buses', (req, res) => {
   const buses = JSON.parse(file.readFileSync(dataFilePath, 'utf-8'));
@@ -16,7 +21,7 @@ app.get('/buses', (req, res) => {
 });
 
 app.get('/buses/:placa', (req, res) => {
-  const { placa } = req.params; 
+  const { placa } = req.params;
   const buses = JSON.parse(file.readFileSync(dataFilePath, 'utf-8'));
   const bus = buses.find(bus => bus.placa === placa);
 
