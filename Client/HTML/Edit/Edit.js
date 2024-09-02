@@ -44,13 +44,15 @@ document.getElementById('editBusForm').addEventListener('submit', function (even
     }
 
     if (isValid) {
+        const oldPlate = oldPlateLetters.value.toUpperCase() + oldPlateNumbers.value;
+        const newPlate = newPlateLetters.value.toUpperCase() + newPlateNumbers.value;
+
         const busInfo = {
-            old_bus_plate: oldPlateLetters.value.toUpperCase() + oldPlateNumbers.value,
-            new_bus_plate: newPlateLetters.value.toUpperCase() + newPlateNumbers.value,
-            bus_last_arrival: arrivalTime.value
+            placa: newPlate,
+            tiempoLlegada: arrivalTime.value
         };
 
-        fetch('http://localhost:3000/buses', {
+        fetch(`http://localhost:3000/buses/${oldPlate}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -59,10 +61,10 @@ document.getElementById('editBusForm').addEventListener('submit', function (even
         })
         .then(response => response.json())
         .then(data => {
-            if (data.success) {
-                alert(`Transmilenio con nueva matrícula ${data.new_bus_plate} actualizado con éxito.`);
+            if (data.message) {
+                alert(data.message);
             } else {
-                alert('Error al actualizar el bus: ' + data.message);
+                alert(`Transmilenio con nueva matrícula ${data.placa} actualizado con éxito.`);
             }
         })
         .catch(error => {

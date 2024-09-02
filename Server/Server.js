@@ -1,12 +1,14 @@
 const express = require('express');
 const file = require('fs');
 const path = require('path');
+const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
 const dataFilePath = path.join(__dirname, 'Data', 'Data.json');
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/buses', (req, res) => {
   const buses = JSON.parse(file.readFileSync(dataFilePath, 'utf-8'));

@@ -40,7 +40,7 @@ document.getElementById('newBusForm').addEventListener('submit', function (event
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(busInfo)
+            body: JSON.stringify({ placa: 'ABD123', tiempoLlegada: '10:30' })
         })
         .then(response => response.json())
         .then(data => {

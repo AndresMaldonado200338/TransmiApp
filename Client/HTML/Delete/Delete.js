@@ -23,21 +23,18 @@ document.getElementById('deleteBusForm').addEventListener('submit', function (ev
     }
 
     if (isValid) {
-        const busInfo = {
-            bus_plate: plateLetters.value.toUpperCase() + plateNumbers.value
-        };
+        const busPlate = plateLetters.value.toUpperCase() + plateNumbers.value;
 
-        fetch('http://localhost:3000/buses', {
-            method: 'DELETE', 
+        fetch(`http://localhost:3000/buses/${busPlate}`, {
+            method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(busInfo)
+            }
         })
         .then(response => response.json())
         .then(data => {
-            if (data.success) {
-                alert(`Transmilenio con matrícula ${data.bus_plate} eliminado con éxito.`);
+            if (data.message === 'Bus eliminado exitosamente.') {
+                alert(`Transmilenio con matrícula ${busPlate} eliminado con éxito.`);
             } else {
                 alert('Error al eliminar el bus: ' + data.message);
             }
